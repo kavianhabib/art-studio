@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Page Content -->
+    <div class="page-heading about-heading header-text" style = "background-image: url({{data.banner.image_1.url}});" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>{{data.banner.small_title}}</h4>
+              <h2>{{ data.banner.big_title }}</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="best-features about-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{data.about_title}}</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image">
+              <img src="{{ data.image.url }}" alt="{{data.about_title}}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-content">
+              <h4>{{data.small_title}}</h4>
+              <p>{{data.description}}</p>
+              <ul class="social-icons">
+                <li><a href="https://{{data.facebook}}"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://{{data.twitter}}"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://{{data.linkedin}}"><i class="fa fa-linkedin"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="team-members">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h2>{{data.old_works_title}}</h2>
+            </div>
+          </div>
+          {% for item in old_works %}
+          <div class="col-md-4">
+            <div class="team-member">
+              <div class="thumb-container">
+                <img src="{{item.image.url}}" alt="">
+           
+              </div>
+              <div class="down-content">
+                <h4>{{item.title}}</h4>
+                <span>{{item.dimension}}</span>
+                <p>{{item.description}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}

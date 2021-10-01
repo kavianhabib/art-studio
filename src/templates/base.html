@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>Emmett Art Studio</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-sixteen-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+
+    <script tpye = "text/javascript">
+
+      function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  // Does this cookie string begin with the name we want?
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+      }
+
+      function uuid(){
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c){
+          var r = Math.random() *16|0, v=c=='x'?r:(r&0x3|0x8);
+          return v.toString(16);
+        })
+      }
+      
+      let device = getCookie('device')
+
+      if(device == null || device == undefined){
+        device = uuid()
+      }
+      document.cookie = 'device='+device+';domain=;path=/'
+    </script>
+  </head>
+
+  <body>
+{% include "header.html" %}
+{% include 'preloader.html'%}
+{% if messages %}
+{% for message in messages %}
+<div class = "alert alert-{{ message.tags }}" role = "alert">
+    {{ message }}
+</div>
+{% endfor %}    
+{% endif %}
+{% block content %}
+
+{% endblock content %}
+{% include "footer.html"%}
+
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- Additional Scripts -->
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+<script src="{% static 'js/slick.js' %}"></script>
+<script src="{% static 'js/isotope.js' %}"></script>
+<script src="{% static 'js/accordions.js' %}"></script>
+</body>
+
+</html>
